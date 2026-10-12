@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cd6sih2poieup"]
+
+[ext_resource type="Script" uid="uid://bgbtlbqtxae5i" path="res://character_body_2d.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dy5oa0mqelljd" path="res://Sourdough-Blueberry-Bagel-Recipe-768x1152.jpg" id="1_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bcr3xcscm5glt" path="res://icon.svg" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c5lc6iwx3njn4" path="res://stuffs.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c5q8311vddsvg" path="res://toilet_paper.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bcpydbj4y85i1" path="res://SKIBIDI TOILET.jpg" id="5_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv2lo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv2lo"]
+radius = 59.0
+height = 134.0
+
+[node name="Node2D" type="Node2D" unique_id=1909517297]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1496356206]
+position = Vector2(615.00006, 338)
+scale = Vector2(1.6744062, 0.6087384)
+texture = ExtResource("1_7mycd")
+
+[node name="Node2D" parent="." unique_id=1260929657 instance=ExtResource("3_h2yge")]
+position = Vector2(316, 224)
+
+[node name="Node2D2" parent="." unique_id=2094681781 instance=ExtResource("3_h2yge")]
+position = Vector2(571, 450)
+
+[node name="Node2D3" parent="." unique_id=1948629372 instance=ExtResource("3_h2yge")]
+position = Vector2(924, 176)
+
+[node name="Basket" type="Area2D" parent="." unique_id=233568524 groups=["skibidi basket"]]
+position = Vector2(216, 540)
+scale = Vector2(19.80681, 9.267686)
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=657822909]
+position = Vector2(0.15102506, 1.1920929e-06)
+scale = Vector2(0.019438803, -0.011363022)
+texture = ExtResource("5_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket" unique_id=34241831]
+shape = SubResource("RectangleShape2D_hv2lo")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1485593582]
+script = ExtResource("1_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=888431180]
+texture = ExtResource("2_h2yge")
+
+[node name="PickupArea" type="Area2D" parent="CharacterBody2D" unique_id=902333937]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/PickupArea" unique_id=508977462]
+shape = SubResource("CapsuleShape2D_hv2lo")
+
+[node name="HeldToiletPaper" type="Sprite2D" parent="CharacterBody2D" unique_id=1133280991]
+visible = false
+position = Vector2(1, 27)
+scale = Vector2(4.2596684, 1.1963422)
+texture = ExtResource("3_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CharacterBody2D" unique_id=1127928179]
+
+[node name="ToiletPaperDisplay" type="Label" parent="CharacterBody2D/CanvasLayer" unique_id=2132787634]
+offset_left = 950.0
+offset_top = -10.0
+offset_right = 1061.0
+offset_bottom = 13.0
+scale = Vector2(1.6468098, 8.122938)
+text = "Toilet Paper: 0"
+
+[connection signal="area_entered" from="CharacterBody2D/PickupArea" to="CharacterBody2D" method="_on_pickup_area_area_entered"]

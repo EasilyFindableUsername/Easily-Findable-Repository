@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c5lc6iwx3njn4"]
+
+[ext_resource type="Texture2D" uid="uid://c5q8311vddsvg" path="res://toilet_paper.png" id="1_qfakl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hv2lo"]
+radius = 3.1109452
+
+[node name="apple" type="Area2D" unique_id=1260929657 groups=["stuffs"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=500398271]
+scale = Vector2(2.3809583, 3.142864)
+texture = ExtResource("1_qfakl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=229901765]
+scale = Vector2(12.59728, 16.04841)
+shape = SubResource("CircleShape2D_hv2lo")
